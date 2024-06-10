@@ -25,8 +25,8 @@ const ImageGenerator = () => {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization:
-                    process.env.REACT_APP_API_KEY,
+                    Authorization:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZGE2M2JkMzQtMmZkZC00ZTZlLWFmMWYtZDlkZmUyNDUyNmU1IiwidHlwZSI6ImFwaV90b2tlbiJ9.3M7G9NXaFyYGhebnn5TBgXzV4df9pkQ9s4x4m2_Smwc",
+                    
                 },
                 body: JSON.stringify({
                     show_original_response: false,
