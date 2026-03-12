@@ -26,6 +26,7 @@ const ImageGenerator = () => {
             let data = await response.json();
             console.log("full response", JSON.stringify(data));
             let data_array = data.image;
+            console.log("image value:", data_array ? "has data" : "undefined");
             setImage_url(data_array);
             setIsDownload(true);
         } catch (err) {
