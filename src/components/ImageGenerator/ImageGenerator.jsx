@@ -3,13 +3,11 @@ import "./ImageGenerator.css";
 import header_image from "../assets/header_image.png";
 import Spinner from "../loading/Spinner";
 import Download from "../download/Download";
-
 const ImageGenerator = () => {
     const [image, setImage_url] = React.useState(null);
     const [isLoading, setIsLoading] = React.useState(false);
     const [isDownload, setIsDownload] = React.useState(false);
     let inputRef = React.useRef(null);
-
     const imageGenerator = async () => {
         if (inputRef.current.value === "") {
             return 0;
@@ -35,7 +33,6 @@ const ImageGenerator = () => {
             setIsLoading(false);
         }
     };
-
     return (
         <div className="component-body">
             <div className="header">
@@ -49,6 +46,7 @@ const ImageGenerator = () => {
                     className={!isLoading ? "img-show" : "img-hide"}
                     src={image ? image : header_image}
                     alt="no response"
+                    style={{display: !isLoading ? "block" : "none"}}
                 />
             </div>
             <div className="input-download-bar">
@@ -71,6 +69,4 @@ const ImageGenerator = () => {
         </div>
     );
 };
-
 export default ImageGenerator;
-//auto-deploy
