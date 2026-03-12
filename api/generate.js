@@ -5,22 +5,19 @@ export default async function handler(req, res) {
 
   const { text } = req.body;
 
-  const response = await fetch("https://api.edenai.run/v2/image/generation", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
-    },
-    body: JSON.stringify({
-      show_original_response: false,
-      fallback_providers: "",
-      providers: "openai",
-      text: text,
-      resolution: "1024x1024",
-      num_images: 1,
-    }),
-  });
+  const response = await fetch(
+    "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0",
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ inputs: text }),
+    }
+  );
 
-  const data = await response.json();
-  res.status(200).json(data);
+  const buffer = await response.arrayBuffer();
+  const base64 = Buffer.from(buffer).toString("base64");
+  res.status(200).json({ image: `data:image/jpeg;base64,${base64}` });
 }
