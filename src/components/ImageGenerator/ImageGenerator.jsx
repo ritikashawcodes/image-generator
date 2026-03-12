@@ -37,16 +37,13 @@ const ImageGenerator = () => {
                 }),
             }
         );
-
         
-        console.log("api " + process.env.REACT_APP_API_KEY)
-        let data = await response.json();
-
-        console.log("full response", JSON.stringify(data));
-        let data_array = data.stabilityai.items[0].image_resource_url;
-
-        console.log(isLoading);
-
+     console.log("api " + process.env.REACT_APP_API_KEY)
+     let data = await response.json();
+     console.log("full response", JSON.stringify(data));
+     // let data_array = data.stabilityai.items[0].image_resource_url;
+     console.log(isLoading);
+    
         
             setIsLoading(false);
             setImage_url(data_array);
