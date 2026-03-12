@@ -1,36 +1,68 @@
 # AI Image Generator
-Turn words into stunning AI-generated Art and drawings instantly. Enter a prompt- AI art generator brings your ideas to life!
 
-## TechStacks
-- React js
-- javascript
-- html
-- css
-- eden ai api
+Turn words into stunning AI-generated art and drawings instantly. Enter a prompt and the AI image generator brings your ideas to life!
 
-## Demo Video
+## 🌐 Live Demo
+[image-generator-eight-eta.vercel.app](https://image-generator-eight-eta.vercel.app)
 
-<img src="https://github.com/khan-mujeeb/AI-Image-Generator/assets/89351750/32c723cc-6c07-417e-aea9-068cccce2337" height="500" width="1080" />
+## 🛠 Tech Stack
+* React.js
+* JavaScript
+* HTML
+* CSS
+* Hugging Face Inference API (FLUX.1-schnell model)
+* Vercel Serverless Functions
 
-## ScreenShot
+## ✨ Features
+* Generate stunning AI images from text prompts with a single click
+* Powered by FLUX.1-schnell — a fast, high-quality image generation model
+* Download your generated image for free
+* Clean and responsive UI for both desktop and mobile
+* Serverless backend to securely handle API calls
 
-<div>
-  
-<img src="https://github.com/khan-mujeeb/AI-Image-Generator/assets/89351750/30237bcd-2c23-478b-a391-e037f6d3d1aa" width="540" height="250"/>
+## ⚙️ How It Works
+1. User enters a text prompt describing the image they want
+2. The frontend sends the prompt to a Vercel serverless function
+3. The serverless function calls the Hugging Face API securely
+4. The generated image is returned and displayed instantly
 
+## 🚀 Getting Started
 
-<br><br>
+### Prerequisites
+* Node.js
+* A Hugging Face account and API token
 
-<img src="https://github.com/khan-mujeeb/AI-Image-Generator/assets/89351750/8b8e9170-3154-45c2-9881-c03f4285467b" width="540" height="250"/>
+### Installation
+1. Clone the repository
+```
+   git clone https://github.com/ritikashawcodes/image-generator.git
+```
+2. Install dependencies
+```
+   npm install
+```
+3. Create a `.env` file in the root and add your Hugging Face API token
+```
+   REACT_APP_API_KEY=your_huggingface_token_here
+```
+4. Run the app
+```
+   npm start
+```
 
-</div>
-
-## Features
-- Create AI generated Image with a single click
-- Download your hd image for free
-
-## ⚙ How it works ?!
-User need to enter a prompt, AI image generator automatically creates a ai art 
+## 📁 Project Structure
+```
+image-generator/
+├── api/
+│   └── generate.js       # Vercel serverless function
+├── src/
+│   └── components/
+│       └── ImageGenerator/
+│           ├── ImageGenerator.jsx
+│           └── ImageGenerator.css
+├── public/
+└── package.json
+```
 
 
 
