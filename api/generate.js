@@ -16,7 +16,7 @@ export default async function handler(req, res) {
       fallback_providers: "",
       providers: "openai",
       text: text,
-      resolution: "512x512",
+      resolution: "1024x1024",
       num_images: 1,
     }),
   });
