@@ -19,24 +19,16 @@ const ImageGenerator = () => {
         console.log(isLoading);
         setIsLoading(true);
 
-        const response = await fetch(
-            "https://api.edenai.run/v2/image/generation",
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjExZTM2ZGEtZmUyZi00NTdjLTkzOTAtNmMwOTAzOGNmODE4IiwidHlwZSI6ImFwaV90b2tlbiJ9.dXwM_lNcfKMevybaZETcZd2Cn3XvevBqm5BRw7riPlg",
-                },
-                body: JSON.stringify({
-                    show_original_response: false,
-                    fallback_providers: "",
-                    providers: "openai,deepai,stabilityai",
-                    text: `${inputRef.current.value}`,
-                    resolution: "1024x1024",
-                    num_images: 1,
-                }),
-            }
-        );
+    const response = await fetch(
+    "/api/generate",
+    {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text: inputRef.current.value }),
+    }
+);
         
      console.log("api " + process.env.REACT_APP_API_KEY)
      let data = await response.json();
