@@ -10,18 +10,14 @@
     font-size: 3rem;
     font-weight: 500;
 }
-
 span {
     color: #ef2e8c;
 }
-
 .input-download-bar {
     display: flex;
     gap: 1rem;
 }
-
-.image,
-img {
+.image {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,7 +25,12 @@ img {
     height: 380px;
     width: 380px;
 }
-
+img {
+    border-radius: 30px;
+    height: 380px;
+    width: 380px;
+    object-fit: cover;
+}
 .search-box {
     border-radius: 50px;
     width: 50vw;
@@ -39,9 +40,7 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
-
 .search-box input {
     background-color: #1f3540;
     color: white;
@@ -56,7 +55,6 @@ img {
     text-decoration: none;
     box-shadow: none;
 }
-
 .search-box input::placeholder {
     color: white;
     font-size: 1rem;
@@ -74,63 +72,56 @@ img {
     font-size: 1rem;
     background-color: #ef2e8c;
 }
-
-
 .loading-show {
-    display: block; 
+    display: block;
     transition: 0.6s;
 }
-
 .loading-hide {
-    display: none; 
+    display: none;
     transition: 0.0s;
 }
-
 .img-show {
-    display: block; 
+    display: block;
     transition: 0.2s;
 }
-
 .img-hide {
-    display: none; 
+    display: none;
     transition: 0.0s;
 }
-
 .download-show {
-    visibility: visible; 
+    visibility: visible;
     transition: 0.2s;
 }
-
 .download-hide {
-    visibility: hidden; 
+    visibility: hidden;
     transition: 0.0s;
 }
-
-
-/* Mobile screen media query */
 @media (max-width: 768px) {
     .component-body {
         flex-direction: column;
     }
     .header {
-        font-size: 2rem; /* Adjust the font size for mobile */
+        font-size: 2rem;
     }
-    .image,
+    .image {
+        height: 200px;
+        width: 200px;
+    }
     img {
-        height: 200px; /* Adjust the image height for mobile */
-        width: 200px; /* Adjust the image width for mobile */
+        height: 200px;
+        width: 200px;
     }
     .search-box {
-        width: 90%; /* Adjust the search box width for mobile */
+        width: 90%;
     }
     .search-box input {
-        font-size: 0.9rem; /* Adjust the input font size for mobile */
+        font-size: 0.9rem;
         padding-left: 15px;
         padding-right: 15px;
     }
     .generate-btn {
-        width: 120px; /* Adjust the button width for mobile */
-        height: 50px; /* Adjust the button height for mobile */
-        font-size: 0.9rem; /* Adjust the button font size for mobile */
+        width: 120px;
+        height: 50px;
+        font-size: 0.9rem;
     }
 }
