@@ -20,7 +20,7 @@ const ImageGenerator = () => {
         setIsLoading(true);
 
         const response = await fetch(
-            "https://api.edenai.run/v2/image/generation",
+            "https://api.edenai.run/v2/image/generation/create"
             {
                 method: "POST",
                 headers: {
