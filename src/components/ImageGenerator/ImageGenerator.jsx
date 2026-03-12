@@ -3,45 +3,36 @@ import "./ImageGenerator.css";
 import header_image from "../assets/header_image.png";
 import Spinner from "../loading/Spinner";
 import Download from "../download/Download";
-//
+
 const ImageGenerator = () => {
-    const [image, setImage_url] = React.useState("/");
+    const [image, setImage_url] = React.useState(null);
     const [isLoading, setIsLoading] = React.useState(false);
     const [isDownload, setIsDownload] = React.useState(false);
-
     let inputRef = React.useRef(null);
 
     const imageGenerator = async () => {
         if (inputRef.current.value === "") {
             return 0;
         }
-
-        console.log(isLoading);
         setIsLoading(true);
-
-    const response = await fetch(
-    "/api/generate",
-    {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ text: inputRef.current.value }),
-    }
-);
-        
-     console.log("api " + process.env.REACT_APP_API_KEY)
-     let data = await response.json();
-
-    
-    console.log("full response", JSON.stringify(data));
-    let data_array = data.image;
-    
-        
-            setIsLoading(false);
+        try {
+            const response = await fetch("/api/generate", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ text: inputRef.current.value }),
+            });
+            let data = await response.json();
+            console.log("full response", JSON.stringify(data));
+            let data_array = data.image;
             setImage_url(data_array);
             setIsDownload(true);
-        
+        } catch (err) {
+            console.error("Error:", err);
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -49,18 +40,16 @@ const ImageGenerator = () => {
             <div className="header">
                 AI image <span>generator</span>
             </div>
-
             <div className="image">
                 <Spinner
                     className={isLoading ? "loading-show" : "loading-hide"}
                 ></Spinner>
                 <img
                     className={!isLoading ? "img-show" : "img-hide"}
-                    src={image === "/" ? header_image : image}
+                    src={image ? image : header_image}
                     alt="no response"
                 />
             </div>
-
             <div className="input-download-bar">
                 <div className="search-box">
                     <input
@@ -73,8 +62,10 @@ const ImageGenerator = () => {
                         Generate
                     </button>
                 </div>
-
-                <Download className={isDownload ? "download-show" : "download-hide"} url = {image}></Download>
+                <Download
+                    className={isDownload ? "download-show" : "download-hide"}
+                    url={image}
+                ></Download>
             </div>
         </div>
     );
